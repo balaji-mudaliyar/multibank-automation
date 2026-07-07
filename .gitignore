@@ -2,3 +2,4 @@ test-results/*
 reports/html/*
 package-lock.json
 node_modules/*
+playwright-report/*

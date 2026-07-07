@@ -1,4 +1,4 @@
-import { HomePage } from '../../../src/pages/HomePage';
+import { HomePage } from '../../../src/pages/navigation/HomePage';
 import { test, expect } from '../../../src/fixtures/baseFixture';
 
 test.describe('Logout flows', () => {
