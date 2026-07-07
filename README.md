@@ -3,10 +3,9 @@
 This repo contains automation tests for multibank website flows and the tests use playwright framework
 
 <!-- Badges: replace OWNER/REPO with your GitHub repository -->
-![CI](https://github.com/bmudaliyar/multibank-automation/actions/workflows/ci.yml/badge.svg?branch=main)
-![Codecov](https://codecov.io/gh/bmudaliyar/multibank-automation/branch/main/graph/badge.svg)
-![npm version](https://img.shields.io/npm/v/playwright-framework.svg)
+![CI](https://github.com/balaji-mudaliyar/multibank-automation/actions/workflows/ci.yml/badge.svg?branch=main)
 ![node](https://img.shields.io/badge/node-18%2B-brightgreen)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
 ![license](https://img.shields.io/badge/license-ISC-blue)
 
 Scalable Playwright automation framework used for UI and API tests. This repo is organized with a Page Object pattern, reusable fixtures, and reporting configured.
