@@ -2,6 +2,7 @@ import { Locator, Page, expect } from '@playwright/test';
 import { BasePage } from '../BasePage';
 
 export class ExplorePage extends BasePage {
+  
   readonly spotMarketHeading: Locator;
   readonly topCryptoPricesSection: Locator;
   readonly pairRows: Locator;
@@ -85,4 +86,5 @@ export class ExplorePage extends BasePage {
     await expect(this.firstPairChartColumn).toBeVisible();
     await expect(this.firstPairChart).toBeVisible();
   }
+
 }

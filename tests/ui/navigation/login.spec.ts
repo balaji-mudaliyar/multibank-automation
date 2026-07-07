@@ -1,5 +1,5 @@
-import { LoginPage } from '../../../src/pages/LoginPage';
-import { HomePage } from '../../../src/pages/HomePage';
+import { LoginPage } from '../../../src/pages/navigation/LoginPage';
+import { HomePage } from '../../../src/pages/navigation/HomePage';
 import { test, expect } from '../../../src/fixtures/baseFixture';
 
 test.describe('Login flows', () => {
