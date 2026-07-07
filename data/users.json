@@ -1,9 +1,9 @@
 {
-  "validUser": {
-    "username": "tomsmith",
+  "invalidUser1": {
+    "username": "balaji.mudaliyar@mb.ae",
     "password": "SuperSecretPassword!"
   },
-  "invalidUser": {
+  "invalidUser2": {
     "username": "invalid",
     "password": "wrong"
   }

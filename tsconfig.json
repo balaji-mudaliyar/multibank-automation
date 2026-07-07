@@ -10,5 +10,9 @@
     "types": ["node"],
     "lib": ["ES2020"]
   },
-  "include": ["tests/**/*.ts", "pages/**/*.ts", "fixtures/**/*.ts", "utils/**/*.ts", "constants/**/*.ts"]
+  "include": [
+    "tests/**/*.ts",
+    "src/**/*.ts",
+    "constants/**/*.ts"
+  ]
 }

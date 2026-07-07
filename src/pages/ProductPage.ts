@@ -1,14 +1,14 @@
 import { Page, expect } from '@playwright/test';
-import { URLs } from '../constants/urls';
+import { URLs } from '../../constants/urls';
 
-export class CheckoutPage {
+export class ProductPage {
   constructor(private readonly page: Page) {}
 
   async open() {
-    await this.page.goto(URLs.checkout);
+    await this.page.goto(URLs.inventory);
   }
 
-  async expectCheckoutFormVisible() {
+  async expectProductsVisible() {
     await expect(this.page.locator('body')).toBeVisible();
   }
 }

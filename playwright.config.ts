@@ -9,7 +9,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: [['list'], ['html', { outputFolder: 'reports/html', open: 'never' }]],
   use: {
-    baseURL: process.env.BASE_URL || 'https://the-internet.herokuapp.com',
+    baseURL: process.env.BASE_URL || 'https://mb.io/en-AE',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
