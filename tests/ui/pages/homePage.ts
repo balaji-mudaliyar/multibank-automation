@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-import { BasePage } from './basePage';
+import { BasePage } from '../../../pages/BasePage';
 
 export class HomePage extends BasePage {
   readonly mainRegion: Locator;

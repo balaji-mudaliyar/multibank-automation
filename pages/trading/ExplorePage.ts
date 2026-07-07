@@ -1,5 +1,5 @@
 import { Locator, Page, expect } from '@playwright/test';
-import { BasePage } from './basePage';
+import { BasePage } from '../BasePage';
 
 export class ExplorePage extends BasePage {
   readonly spotMarketHeading: Locator;
