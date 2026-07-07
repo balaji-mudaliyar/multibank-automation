@@ -1,11 +1,11 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 test.describe('Smart Download Link Redirection Tests', () => {
 
   const LANDING_PAGE = 'https://mb.io/en-AE';
 
   // Helper function to extract the href from your Mac UI landing page
-  async function getDownloadHref(page): Promise<string> {
+  async function getDownloadHref(page: Page): Promise<string> {
     await page.goto(LANDING_PAGE);
     const downloadButton = page.locator('a[data-button-type="download"]');
     await expect(downloadButton).toBeVisible();
