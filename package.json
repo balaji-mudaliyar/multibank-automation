@@ -1,0 +1,20 @@
+{
+  "name": "playwright-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Scalable Playwright automation framework skeleton",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report reports/html",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0",
+    "typescript": "^5.8.0"
+  }
+}
