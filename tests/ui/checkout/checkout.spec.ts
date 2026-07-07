@@ -1,6 +1,6 @@
-import { CheckoutPage } from '../../../pages/CheckoutPage';
-import { ProductPage } from '../../../pages/ProductPage';
-import { test, expect } from '../../../fixtures/baseFixture';
+import { CheckoutPage } from '../../../src/pages/CheckoutPage';
+import { ProductPage } from '../../../src/pages/ProductPage';
+import { test, expect } from '../../../src/fixtures/baseFixture';
 
 test.describe('Checkout flows', () => {
   test('opens the inventory page and checkout step', async ({ page, logger }) => {

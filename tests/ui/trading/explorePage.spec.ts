@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { ExplorePage } from '../../../pages/trading/ExplorePage';
+import { ExplorePage } from '../../../src/pages/trading/ExplorePage';
 
 
 test.describe('MB.io Explore Page - Trading Functionality', () => {

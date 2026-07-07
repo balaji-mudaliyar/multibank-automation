@@ -1,4 +1,4 @@
-import { test, expect } from '../../fixtures/baseFixture';
+import { test, expect } from '../../src/fixtures/baseFixture';
 import { URLs } from '../../constants/urls';
 
 test.describe('Users API', () => {
