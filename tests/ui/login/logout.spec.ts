@@ -1,5 +1,5 @@
-import { HomePage } from '../../pages/HomePage';
-import { test, expect } from '../../fixtures/baseFixture';
+import { HomePage } from '../../../pages/HomePage';
+import { test, expect } from '../../../fixtures/baseFixture';
 
 test.describe('Logout flows', () => {
   test('home page loads after logout navigation', async ({ page, logger }) => {

@@ -1,6 +1,6 @@
-import { LoginPage } from '../../pages/LoginPage';
-import { HomePage } from '../../pages/HomePage';
-import { test, expect } from '../../fixtures/baseFixture';
+import { LoginPage } from '../../../pages/LoginPage';
+import { HomePage } from '../../../pages/HomePage';
+import { test, expect } from '../../../fixtures/baseFixture';
 
 test.describe('Login flows', () => {
   test('renders the login form', async ({ page, logger }) => {
