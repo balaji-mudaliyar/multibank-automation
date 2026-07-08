@@ -100,6 +100,30 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 
 - Playwright HTML report is generated under `reports/html/`.
 
+## GitHub Pages (Clean Setup)
+
+Use `docs/` as your GitHub Pages source and publish report files into `docs/report/`.
+
+1. Generate or refresh the Playwright report:
+
+```bash
+npm test
+```
+
+2. Publish report files for GitHub Pages:
+
+```bash
+npm run pages:report
+```
+
+3. Commit and push `docs/` so GitHub Pages serves the latest report.
+
+Notes:
+
+- Pages entry point: `docs/index.html`
+- Embedded report path: `docs/report/index.html`
+- Script used: `scripts/publish-pages-report.sh`
+
 ## Sample Test Execution Report (Cross-Browser)
 
 Command used:
