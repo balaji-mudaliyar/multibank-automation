@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import { ExplorePage } from '../../../src/pages/trading/ExplorePage';
 
 
-test.describe('MB.io Explore Page - Trading Functionality', () => {
+test.describe('Explore Page', () => {
   let explorePage: ExplorePage;
   test.beforeEach(async ({ page }) => {
     explorePage = new ExplorePage(page);
@@ -10,14 +10,14 @@ test.describe('MB.io Explore Page - Trading Functionality', () => {
     await explorePage.waitForExplorePageToLoad();
   });
 
-  test('shows spot trading section with at least one trading pair', async () => {
+  test('should show spot trading section with at least one trading pair', async () => {
     await explorePage.expectSpotMarketVisible();
     await explorePage.expectTopCryptoPricesVisible();
     const rowCount = await explorePage.getTradingPairCount();
     expect(rowCount).toBeGreaterThan(0);
   });
 
-  test('shows category filters and activates selected category', async () => {
+  test('should show category filters and activate the selected category', async () => {
     await expect(explorePage.categoryButtons.Hot).toBeVisible();
     await expect(explorePage.categoryButtons.Gainers).toBeVisible();
     await expect(explorePage.categoryButtons.Losers).toBeVisible();
@@ -25,7 +25,7 @@ test.describe('MB.io Explore Page - Trading Functionality', () => {
     await explorePage.expectCategoryActive('Gainers');
   });
 
-  test('shows expected fields for the first trading pair row', async () => {
+  test('should show expected fields for the first trading pair row', async () => {
     await explorePage.expectFirstPairEntryStructure();
   });
   

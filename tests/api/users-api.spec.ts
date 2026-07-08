@@ -2,7 +2,7 @@ import { test, expect } from '../../src/fixtures/baseFixture';
 import { URLs } from '../../constants/urls';
 
 test.describe('Users API', () => {
-  test('fetches users from the public API', async ({ apiHelper, logger }) => {
+  test('should return a non-empty users list', async ({ apiHelper, logger }) => {
     logger.info('Calling users API');
     const response = await apiHelper.getUsers(URLs.apiUsers);
     expect(response.ok()).toBeTruthy();
