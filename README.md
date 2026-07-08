@@ -87,8 +87,21 @@ npm run test:headed
 npm run test:report
 ```
 
+## What’s included
+
+- UI and API test suites under `tests/`
+- Page Object Model classes under `src/pages/`
+- Reusable fixtures under `src/fixtures/`
+- Test data under `data/`
+- HTML and Playwright reports under `reports/` (including `reports/html/`)
+
 ## Notes
 
+- Docker and Docker Compose write test artifacts to host folders using mounted volumes:
+
+  - `reports/`
+  - `test-results/`
+  - `reports/html/`
 - If a test is marked with `test.only`, CI will fail because `forbidOnly` is enabled when `CI=true`.
 
 ## CI
@@ -98,7 +111,7 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 ## Reporting
 
 - Playwright HTML report is generated under `reports/html/`.
-
+- Allure results are placed in `reports/allure-results/` (CI uploads these as artifacts).
 
 ## Extra Commands
 
