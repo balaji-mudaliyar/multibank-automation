@@ -1,4 +1,4 @@
-import { Locator, Page, expect } from '@playwright/test';
+import { APIRequestContext, Locator, Page, expect } from '@playwright/test';
 import { BasePage } from '../BasePage';
 
 export class HomePage extends BasePage {
@@ -17,6 +17,9 @@ export class HomePage extends BasePage {
   readonly mbgLink: Locator;
   readonly signInButton: Locator;
   readonly signUpButton: Locator;
+  readonly mobileMenuButton: Locator;
+  readonly notFoundHeading: Locator;
+  readonly backToHomepageLink: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -34,6 +37,9 @@ export class HomePage extends BasePage {
     this.mbgLink = page.getByRole('link', { name: '$MBG', exact: true });
     this.signInButton = page.getByRole('link', { name: 'Sign in', exact: true });
     this.signUpButton = page.getByRole('link', { name: 'Sign up', exact: true });
+    this.mobileMenuButton = page.getByRole('button', { name: 'Open menu' });
+    this.notFoundHeading = page.getByText('Page not found');
+    this.backToHomepageLink = page.getByRole('link', { name: 'Back to Homepage' });
   }
 
   async setViewport(width: number, height: number) {
@@ -42,6 +48,14 @@ export class HomePage extends BasePage {
 
   async openHomePage(query = '') {
     await this.open(`/en-AE${query}`);
+  }
+
+  async openInvalidRoute() {
+    const response = await this.page.goto('https://mb.io/en-AE/this-route-should-not-exist', {
+      waitUntil: 'domcontentloaded',
+    });
+    expect(response).not.toBeNull();
+    expect(response!.status()).toBe(404);
   }
 
   async expectHomePageTitle() {
@@ -69,6 +83,38 @@ export class HomePage extends BasePage {
     await expect(this.signInButton).toBeEnabled();
     await expect(this.signUpButton).toBeVisible();
     await expect(this.signUpButton).toBeEnabled();
+  }
+
+  async expectDesktopNavigationCollapsedOnMobile() {
+    await expect(this.mobileMenuButton).toBeVisible();
+    await expect(this.exploreLink).toHaveCount(0);
+    await expect(this.featuresLink).toHaveCount(0);
+    await expect(this.otcDeskLink).toHaveCount(0);
+    await expect(this.companyLink).toHaveCount(0);
+    await expect(this.supportLink).toHaveCount(0);
+    await expect(this.mbgLink).toHaveCount(0);
+    await expect(this.signInButton).toHaveCount(0);
+  }
+
+  async expectHeaderLinksReachable(request: APIRequestContext) {
+    const navigationLinks = [
+      this.exploreLink,
+      this.featuresLink,
+      this.otcDeskLink,
+      this.companyLink,
+      this.supportLink,
+      this.mbgLink,
+      this.signInButton,
+    ];
+
+    for (const link of navigationLinks) {
+      const href = await link.getAttribute('href');
+      expect(href).toBeTruthy();
+      const targetUrl = new URL(href!, 'https://mb.io').toString();
+      const response = await request.get(targetUrl, { maxRedirects: 0 });
+      expect(response.status(), `Broken navigation link: ${targetUrl}`).toBeGreaterThanOrEqual(200);
+      expect(response.status(), `Broken navigation link: ${targetUrl}`).toBeLessThan(400);
+    }
   }
 
   async openExploreFromHeader() {
@@ -114,6 +160,11 @@ export class HomePage extends BasePage {
 
   async expectSupportLandingVisible() {
     await expect(this.page.getByRole('heading', { name: 'Quick actions', exact: true })).toBeVisible();
+  }
+
+  async expectNotFoundPageVisible() {
+    await expect(this.notFoundHeading).toBeVisible();
+    await expect(this.backToHomepageLink).toBeVisible();
   }
 
 }
