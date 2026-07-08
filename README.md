@@ -102,7 +102,6 @@ npm run test:report
   - `reports/`
   - `test-results/`
   - `reports/html/`
-
 - If a test is marked with `test.only`, CI will fail because `forbidOnly` is enabled when `CI=true`.
 
 ## CI
