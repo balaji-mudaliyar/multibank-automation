@@ -4,4 +4,3 @@ package-lock.json
 node_modules/*
 playwright-report/*
 .vscode/settings.json
-reports/sample-cross-browser-report.json
