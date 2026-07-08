@@ -13,8 +13,17 @@ test.describe('Login Flows', () => {
     logger.info('Logging in with invalid credentials');
     const loginPage = new LoginPage(page);
     await loginPage.open();
-    await loginPage.login(testData.invalidUser1.username, testData.invalidUser1.password);
+    await loginPage.login(testData.invalidUser1.email, testData.invalidUser1.password);
+    await loginPage.clickLoginButton();
     await loginPage.expectLoginErrorVisible();
+  });
+
+  test.only('email and password are required', async ({ page, logger, testData }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.open();
+    await loginPage.login(testData.invalidUser1.email, testData.invalidUser1.password);
+    await loginPage.clearEmailAndPasswordFields();
+    await loginPage.expectFieldRequiredErrors();
   });
 
   
