@@ -98,6 +98,8 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 
 ## Reporting
 
+- Sample Report can be viewed here : https://balaji-mudaliyar.github.io/multibank-automation/ 
+
 - Playwright HTML report is generated under `reports/html/`.
 
 ## GitHub Pages (Clean Setup)
