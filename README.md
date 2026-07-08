@@ -17,6 +17,20 @@ Project structure at a glance
 - `reports/` — HTML reports and artifacts.
 - `reports/html/` — Playwright HTML report output.
 
+## Why Playwright ? 
+
+I selected Playwright framework for automationat because it offers modern browser automation with excellent reliability, built-in support for multiple browsers, and features that reduce test flakiness. It's particularly well-suited for fast-moving web applications and CI/CD pipelines.
+
+It provides the following
+
+- Reliable tests with built-in auto-waiting
+- Fast execution and parallelism
+- Cross-browser testing (Chromium, Firefox, WebKit)
+- Rich debugging features (trace viewer, screenshots, videos)
+- Built-in API testing and network interception
+- Strong CI/CD integration
+- Support for multiple programming languages
+
 ## Quick Start
 
 ### 1. Run with Docker
