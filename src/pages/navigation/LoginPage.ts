@@ -33,4 +33,26 @@ export class LoginPage extends BasePage {
   async expectLoginErrorVisible() {
     await expect(this.loginErrorText).toBeVisible();
   }
+
+  async expectGuestUserNotAuthenticated() {
+    const currentUserResponsePromise = this.page.waitForResponse(
+      response =>
+        response.url().includes('/api/v1/users/current') &&
+        response.request().method() === 'GET'
+    );
+
+    await this.page.goto('https://trade.mb.io/login', { waitUntil: 'domcontentloaded' });
+
+    const response = await currentUserResponsePromise;
+    expect(response.status()).toBe(403);
+
+    const body = await response.json();
+    expect(body).toMatchObject({
+      status: 403,
+      code: 10008,
+      message: 'Not authenticated',
+      translatedMessage: 'Not authenticated',
+    });
+    expect(body.traceId).toBeTruthy();
+  }
 }

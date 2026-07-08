@@ -5,9 +5,9 @@
 ![node](https://img.shields.io/badge/node-18%2B-brightgreen)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
 
-This repository contains automated UI and API tests for the MultiBank website, built with Playwright. The framework uses the Page Object Model (POM), reusable fixtures, and integrated reporting.
+This repository contains automated UI and API tests for the MultiBank website, built with Playwright. It uses a Page Object Model (POM) structure, reusable fixtures, and built-in reporting.
 
-Key folders
+Project structure at a glance
 
 - `tests/` — UI and API test suites.
 - `src/pages/` — Page Object classes.
@@ -15,13 +15,13 @@ Key folders
 - `src/utils/` — Helpers (`apiHelper.ts`, `waitHelper.ts`, `logger.ts`).
 - `data/` — JSON test data.
 - `reports/` — HTML reports and artifacts.
-- `playwright-report/` — Playwright HTML report output.
+- `reports/html/` — Playwright HTML report output.
 
 ## Quick Start
 
 ### 1. Run with Docker
 
-This is the easiest way to run the project locally and is the best option for an interviewer.
+For easiest way to run with single command, I have used Docker and shell script.
 
 1. Run all tests:
 
@@ -35,25 +35,13 @@ This is the easiest way to run the project locally and is the best option for an
 ./scripts/tests.sh spec tests/ui/navigation/home.spec.ts
 ```
 
-3. Pass extra Playwright flags if needed:
+3. Pass additional Playwright flags when needed:
 
 ```bash
 ./scripts/tests.sh spec tests/ui/navigation/home.spec.ts -- --project=chromium -g "invalid route"
 ```
 
-4. Use Docker Compose instead of `docker run`:
-
-```bash
-./scripts/tests.sh test --compose
-```
-
-5. Override the base URL if needed:
-
-```bash
-BASE_URL=https://mb.io/en-AE ./scripts/tests.sh test
-```
-
-If you prefer Docker commands directly:
+If you prefer running Docker commands directly:
 
 ```bash
 docker compose up --build
@@ -99,23 +87,9 @@ npm run test:headed
 npm run test:report
 ```
 
-## What’s included
-
-- UI and API test suites under `tests/`
-- Page Object Model classes under `src/pages/`
-- Reusable fixtures under `src/fixtures/`
-- Test data under `data/`
-- HTML and Playwright reports under `reports/` and `playwright-report/`
-
 ## Notes
 
-- Docker and Docker Compose write artifacts to host folders via mounts:
-
-  - `reports/`
-  - `test-results/`
-  - `playwright-report/`
-
-- If a test is marked with `test.only`, CI runs fail because `forbidOnly` is enabled when `CI=true`.
+- If a test is marked with `test.only`, CI will fail because `forbidOnly` is enabled when `CI=true`.
 
 ## CI
 
@@ -123,8 +97,8 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 
 ## Reporting
 
-- Playwright HTML report is generated under `playwright-report/`.
-- Allure results are placed in `reports/allure-results/` (CI uploads these as artifacts).
+- Playwright HTML report is generated under `reports/html/`.
+
 
 ## Extra Commands
 

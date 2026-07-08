@@ -1,0 +1,61 @@
+{
+  "features": {
+    "isRwaEnabled": false,
+    "isEarnEnabled": true,
+    "isOtcEnabled": false,
+    "isBoWithdrawalSuspensionEnabled": false,
+    "isDerivativesEnabled": false,
+    "isConvertEnabled": true,
+    "isMbgPreSaleEnabled": false,
+    "isFiatDepositEnabled": false,
+    "isFiatWithdrawalEnabled": false,
+    "isInstantBuyEnabled": false,
+    "isPanicSellEnabled": false,
+    "isCryptoDepositEnabled": false,
+    "isCryptoWithdrawalEnabled": false,
+    "isIdentityVerificationEnabled": false,
+    "isSocialAuthEnabled": false,
+    "isVibanEnabled": true,
+    "isReferralsEnabled": true,
+    "isAffiliateEnabled": false,
+    "isChCdcEnabled": true,
+    "isSpotOrderTypeBuyEnabled": true,
+    "isSpotOrderTypeSellEnabled": true
+  },
+  "passcodeLockInterval": 300,
+  "meaningfulDigitsOffset": 1,
+  "pollingIntervals": {
+    "price": 2,
+    "market": 5
+  },
+  "supportedLanguages": [
+    "en",
+    "fr",
+    "ar",
+    "zh-CN",
+    "zh-TW",
+    "de",
+    "ru",
+    "pt",
+    "es",
+    "tr",
+    "it"
+  ],
+  "supportedQuotes": [
+    "USD"
+  ],
+  "platforms": {
+    "androidMinimalVersion": "26.0.20",
+    "iosMinimalVersion": "26.0.7",
+    "nodesUrl": "wss://nodes.mb.io/ws",
+    "mqttUrl": "wss://ws.mb.io/mqtt"
+  },
+  "links": {
+    "terms": "https://mb.io/en/iframes/terms-conditions",
+    "privacy": "https://mb.io/en/iframes/privacy-policy",
+    "userAgreement": "https://mb.io/en/iframes/client-agreement",
+    "help": "https://direct.lc.chat/3413162/269",
+    "earnTerms": "https://mb.io/en/iframes/earn-terms",
+    "earnDisclaimer": "https://mb.io/en/iframes/earn-disclaimer"
+  }
+}

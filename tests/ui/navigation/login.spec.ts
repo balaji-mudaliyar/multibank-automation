@@ -16,4 +16,11 @@ test.describe('Login flows', () => {
     await loginPage.login(testData.invalidUser1.username, testData.invalidUser1.password);
     await loginPage.expectLoginErrorVisible();
   });
+
+  
+  test('guest user is not authenticated', async ({ page }) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.expectGuestUserNotAuthenticated();
+  });
+
 });

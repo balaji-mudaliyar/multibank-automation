@@ -13,6 +13,7 @@
   "include": [
     "tests/**/*.ts",
     "src/**/*.ts",
-    "constants/**/*.ts"
+    "constants/**/*.ts",
+    "data/**/*.json"
   ]
 }

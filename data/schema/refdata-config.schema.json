@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "features",
+    "passcodeLockInterval",
+    "meaningfulDigitsOffset",
+    "pollingIntervals",
+    "supportedLanguages",
+    "supportedQuotes",
+    "platforms",
+    "links"
+  ],
+  "properties": {
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "isRwaEnabled",
+        "isEarnEnabled",
+        "isOtcEnabled",
+        "isBoWithdrawalSuspensionEnabled",
+        "isDerivativesEnabled",
+        "isConvertEnabled",
+        "isMbgPreSaleEnabled",
+        "isFiatDepositEnabled",
+        "isFiatWithdrawalEnabled",
+        "isInstantBuyEnabled",
+        "isPanicSellEnabled",
+        "isCryptoDepositEnabled",
+        "isCryptoWithdrawalEnabled",
+        "isIdentityVerificationEnabled",
+        "isSocialAuthEnabled",
+        "isVibanEnabled",
+        "isReferralsEnabled",
+        "isAffiliateEnabled",
+        "isChCdcEnabled",
+        "isSpotOrderTypeBuyEnabled",
+        "isSpotOrderTypeSellEnabled"
+      ],
+      "properties": {
+        "isRwaEnabled": { "type": "boolean" },
+        "isEarnEnabled": { "type": "boolean" },
+        "isOtcEnabled": { "type": "boolean" },
+        "isBoWithdrawalSuspensionEnabled": { "type": "boolean" },
+        "isDerivativesEnabled": { "type": "boolean" },
+        "isConvertEnabled": { "type": "boolean" },
+        "isMbgPreSaleEnabled": { "type": "boolean" },
+        "isFiatDepositEnabled": { "type": "boolean" },
+        "isFiatWithdrawalEnabled": { "type": "boolean" },
+        "isInstantBuyEnabled": { "type": "boolean" },
+        "isPanicSellEnabled": { "type": "boolean" },
+        "isCryptoDepositEnabled": { "type": "boolean" },
+        "isCryptoWithdrawalEnabled": { "type": "boolean" },
+        "isIdentityVerificationEnabled": { "type": "boolean" },
+        "isSocialAuthEnabled": { "type": "boolean" },
+        "isVibanEnabled": { "type": "boolean" },
+        "isReferralsEnabled": { "type": "boolean" },
+        "isAffiliateEnabled": { "type": "boolean" },
+        "isChCdcEnabled": { "type": "boolean" },
+        "isSpotOrderTypeBuyEnabled": { "type": "boolean" },
+        "isSpotOrderTypeSellEnabled": { "type": "boolean" }
+      }
+    },
+    "passcodeLockInterval": { "type": "number" },
+    "meaningfulDigitsOffset": { "type": "number" },
+    "pollingIntervals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["price", "market"],
+      "properties": {
+        "price": { "type": "number" },
+        "market": { "type": "number" }
+      }
+    },
+    "supportedLanguages": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "supportedQuotes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "platforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "androidMinimalVersion",
+        "iosMinimalVersion",
+        "nodesUrl",
+        "mqttUrl"
+      ],
+      "properties": {
+        "androidMinimalVersion": { "type": "string" },
+        "iosMinimalVersion": { "type": "string" },
+        "nodesUrl": { "type": "string", "pattern": "^wss://" },
+        "mqttUrl": { "type": "string", "pattern": "^wss://" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "terms",
+        "privacy",
+        "userAgreement",
+        "help",
+        "earnTerms",
+        "earnDisclaimer"
+      ],
+      "properties": {
+        "terms": { "type": "string", "format": "uri" },
+        "privacy": { "type": "string", "format": "uri" },
+        "userAgreement": { "type": "string", "format": "uri" },
+        "help": { "type": "string", "format": "uri" },
+        "earnTerms": { "type": "string", "format": "uri" },
+        "earnDisclaimer": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}
