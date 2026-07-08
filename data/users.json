@@ -1,10 +1,10 @@
 {
   "invalidUser1": {
-    "username": "balaji.mudaliyar@mb.ae",
+    "email": "balaji.mudaliyar@mb.ae",
     "password": "SuperSecretPassword!"
   },
   "invalidUser2": {
-    "username": "invalid",
+    "email": "invalid",
     "password": "wrong"
   }
 }
