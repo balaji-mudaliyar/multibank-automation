@@ -71,7 +71,7 @@ run_compose_test() {
     playwright_args+=("${EXTRA_ARGS[@]}")
   fi
 
-  docker compose run --rm "$SERVICE_NAME" "${playwright_args[@]}"
+  docker compose run --build --rm "$SERVICE_NAME" "${playwright_args[@]}"
 }
 
 run_compose_spec() {
@@ -80,14 +80,23 @@ run_compose_spec() {
     playwright_args+=("${EXTRA_ARGS[@]}")
   fi
 
-  docker compose run --rm "$SERVICE_NAME" "${playwright_args[@]}"
+  docker compose run --build --rm "$SERVICE_NAME" "${playwright_args[@]}"
 }
 
 run_docker_build() {
   docker build -t "$IMAGE_NAME" .
 }
 
+ensure_docker_image() {
+  if ! docker image inspect "$IMAGE_NAME" >/dev/null 2>&1; then
+    echo "Image '$IMAGE_NAME' not found locally. Building it now..."
+    run_docker_build
+  fi
+}
+
 run_docker_test() {
+  ensure_docker_image
+
   local playwright_args=(npx playwright test)
   if ((${#EXTRA_ARGS[@]})); then
     playwright_args+=("${EXTRA_ARGS[@]}")
@@ -104,6 +113,8 @@ run_docker_test() {
 }
 
 run_docker_spec() {
+  ensure_docker_image
+
   local playwright_args=(npx playwright test "$SPEC_PATH")
   if ((${#EXTRA_ARGS[@]})); then
     playwright_args+=("${EXTRA_ARGS[@]}")
