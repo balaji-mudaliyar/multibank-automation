@@ -79,7 +79,8 @@ export class ExplorePage extends BasePage {
 
   async clickCategory(name: keyof ExplorePage['categoryButtons']) {
     await this.categoryButtons[name].click();
-    await this.page.waitForTimeout(500);
+    await expect(this.categoryButtons[name]).toHaveClass(/bg-lighter/);
+    await expect(this.categoryButtons[name]).toHaveClass(/text-white/);
   }
 
   async expectCategoryActive(name: keyof ExplorePage['categoryButtons']) {
