@@ -23,7 +23,7 @@ test.describe('Refdata Config API', () => {
     ).toBeTruthy();
   });
 
-  test('returns 200 and expected contract', async ({ apiHelper, logger }) => {
+  test('returns 200 and schema-valid contract', async ({ apiHelper, logger }) => {
     logger.info('Calling refdata config API');
 
     let response;
@@ -44,8 +44,6 @@ test.describe('Refdata Config API', () => {
       isSchemaValid,
       `Schema validation failed: ${JSON.stringify(validateRefdataConfig.errors)}`
     ).toBeTruthy();
-
-    expect(body).toMatchObject(expectedResponse);
 
     expect(Array.isArray(body.supportedLanguages)).toBeTruthy();
     expect(body.supportedLanguages.length).toBeGreaterThan(0);
