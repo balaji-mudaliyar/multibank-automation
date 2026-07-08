@@ -18,7 +18,7 @@ test.describe('Login Flows', () => {
     await loginPage.expectLoginErrorVisible();
   });
 
-  test.only('email and password are required', async ({ page, logger, testData }) => {
+  test('email and password are required', async ({ page, logger, testData }) => {
     const loginPage = new LoginPage(page);
     await loginPage.open();
     await loginPage.login(testData.invalidUser1.email, testData.invalidUser1.password);
