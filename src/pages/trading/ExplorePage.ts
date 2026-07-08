@@ -60,6 +60,19 @@ export class ExplorePage extends BasePage {
     await this.page.waitForSelector('table tbody tr[data-index]', { state: 'visible', timeout: 15000 });
   }
 
+  async expectMarketDataLoadTimeout(timeoutMs = 3000) {
+    let contentLoaded = true;
+
+    try {
+      await this.firstPairRow.waitFor({ state: 'visible', timeout: timeoutMs });
+    } catch {
+      contentLoaded = false;
+    }
+
+    expect(contentLoaded).toBe(false);
+    await expect(this.pairRows).toHaveCount(0);
+  }
+
   async getTradingPairCount() {
     return this.pairRows.count();
   }

@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { HomePage } from '../../../src/pages/navigation/HomePage';
+import { ExplorePage } from '../../../src/pages/trading/ExplorePage';
 
 test.describe('Navigation End-to-End Flow', () => {
 
@@ -35,6 +36,43 @@ test.describe('Navigation End-to-End Flow', () => {
     await homePage.expectSupportLandingVisible();
 
     await homePage.openMbgFromHeader();
+  });
+
+  test('should detect broken links across header navigation links', async ({ page, request }) => {
+    const homePage = new HomePage(page);
+
+    await homePage.setViewport(1440, 900);
+    await homePage.openHomePage();
+    await homePage.expectHeaderLinksReachable(request);
+  });
+
+  test('should collapse desktop navigation at a mobile breakpoint', async ({ page }) => {
+    const homePage = new HomePage(page);
+
+    await homePage.setViewport(390, 844);
+    await homePage.openHomePage();
+    await homePage.expectDesktopNavigationCollapsedOnMobile();
+  });
+
+  test('should handle an invalid route with a 404 recovery page', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await homePage.openInvalidRoute();
+    await homePage.expectNotFoundPageVisible();
+  });
+
+  test('should handle market content loading timeout on the explore page', async ({ page }) => {
+    await page.route('**/core-api.mb.io/api/io/v1/market/widget', route => route.abort());
+    await page.route('**/mbg-market-data-service.mb.io/api/io/v1/marketdata/prices**', route => route.abort());
+    await page.route('**/core-api.mb.io/api/io/v1/market/instruments', route => route.abort());
+
+    const homePage = new HomePage(page);
+    const explorePage = new ExplorePage(page);
+
+    await homePage.setViewport(1440, 900);
+    await homePage.openHomePage();
+    await homePage.openExploreFromHeader();
+    await explorePage.expectSpotMarketVisible();
+    await explorePage.expectMarketDataLoadTimeout();
   });
 
   // Define standard desktop viewports to validate layout behavior
