@@ -66,11 +66,21 @@ run_compose_build() {
 }
 
 run_compose_test() {
-  docker compose run --rm "$SERVICE_NAME" npx playwright test "${EXTRA_ARGS[@]}"
+  local playwright_args=(npx playwright test)
+  if ((${#EXTRA_ARGS[@]})); then
+    playwright_args+=("${EXTRA_ARGS[@]}")
+  fi
+
+  docker compose run --rm "$SERVICE_NAME" "${playwright_args[@]}"
 }
 
 run_compose_spec() {
-  docker compose run --rm "$SERVICE_NAME" npx playwright test "$SPEC_PATH" "${EXTRA_ARGS[@]}"
+  local playwright_args=(npx playwright test "$SPEC_PATH")
+  if ((${#EXTRA_ARGS[@]})); then
+    playwright_args+=("${EXTRA_ARGS[@]}")
+  fi
+
+  docker compose run --rm "$SERVICE_NAME" "${playwright_args[@]}"
 }
 
 run_docker_build() {
@@ -78,6 +88,11 @@ run_docker_build() {
 }
 
 run_docker_test() {
+  local playwright_args=(npx playwright test)
+  if ((${#EXTRA_ARGS[@]})); then
+    playwright_args+=("${EXTRA_ARGS[@]}")
+  fi
+
   docker run --rm \
     -e CI=true \
     -e BASE_URL="${BASE_URL:-https://mb.io/en-AE}" \
@@ -85,10 +100,15 @@ run_docker_test() {
     -v "$PWD/test-results:/app/test-results" \
     -v "$PWD/playwright-report:/app/playwright-report" \
     "$IMAGE_NAME" \
-    npx playwright test "${EXTRA_ARGS[@]}"
+    "${playwright_args[@]}"
 }
 
 run_docker_spec() {
+  local playwright_args=(npx playwright test "$SPEC_PATH")
+  if ((${#EXTRA_ARGS[@]})); then
+    playwright_args+=("${EXTRA_ARGS[@]}")
+  fi
+
   docker run --rm \
     -e CI=true \
     -e BASE_URL="${BASE_URL:-https://mb.io/en-AE}" \
@@ -96,7 +116,7 @@ run_docker_spec() {
     -v "$PWD/test-results:/app/test-results" \
     -v "$PWD/playwright-report:/app/playwright-report" \
     "$IMAGE_NAME" \
-    npx playwright test "$SPEC_PATH" "${EXTRA_ARGS[@]}"
+    "${playwright_args[@]}"
 }
 
 case "$COMMAND" in
