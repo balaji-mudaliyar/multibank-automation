@@ -10,14 +10,14 @@ test.describe('MB.io Explore Page - Trading Functionality', () => {
     await explorePage.waitForExplorePageToLoad();
   });
 
-  test('testcase 1 - Spot trading section renders and displays trading pairs', async () => {
+  test('shows spot trading section with at least one trading pair', async () => {
     await explorePage.expectSpotMarketVisible();
     await explorePage.expectTopCryptoPricesVisible();
     const rowCount = await explorePage.getTradingPairCount();
     expect(rowCount).toBeGreaterThan(0);
   });
 
-  test('testcase 2 - Trading pairs are correctly grouped into categories', async () => {
+  test('shows category filters and activates selected category', async () => {
     await expect(explorePage.categoryButtons.Hot).toBeVisible();
     await expect(explorePage.categoryButtons.Gainers).toBeVisible();
     await expect(explorePage.categoryButtons.Losers).toBeVisible();
@@ -25,7 +25,7 @@ test.describe('MB.io Explore Page - Trading Functionality', () => {
     await explorePage.expectCategoryActive('Gainers');
   });
 
-  test('testcase 3 - Trading pair entries contain the expected data fields', async () => {
+  test('shows expected fields for the first trading pair row', async () => {
     await explorePage.expectFirstPairEntryStructure();
   });
   

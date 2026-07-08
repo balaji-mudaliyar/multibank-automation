@@ -1,4 +1,5 @@
 import { APIRequestContext, Locator, Page, expect } from '@playwright/test';
+import { URLs } from '../../../constants/urls';
 import { BasePage } from '../BasePage';
 
 export class HomePage extends BasePage {
@@ -51,11 +52,14 @@ export class HomePage extends BasePage {
   }
 
   async openInvalidRoute() {
-    const response = await this.page.goto('https://mb.io/en-AE/this-route-should-not-exist', {
+    const response = await this.page.goto(`${URLs.base}/en-AE/this-route-should-not-exist`, {
       waitUntil: 'domcontentloaded',
     });
-    expect(response).not.toBeNull();
-    expect(response!.status()).toBe(404);
+    if (!response) {
+      throw new Error('Expected a response when opening invalid route, but got null.');
+    }
+
+    expect(response.status()).toBe(404);
   }
 
   async expectHomePageTitle() {
@@ -109,8 +113,11 @@ export class HomePage extends BasePage {
 
     for (const link of navigationLinks) {
       const href = await link.getAttribute('href');
-      expect(href).toBeTruthy();
-      const targetUrl = new URL(href!, 'https://mb.io').toString();
+      if (!href) {
+        throw new Error('Navigation link is missing href attribute.');
+      }
+
+      const targetUrl = new URL(href, URLs.base).toString();
       const response = await request.get(targetUrl, { maxRedirects: 0 });
       expect(response.status(), `Broken navigation link: ${targetUrl}`).toBeGreaterThanOrEqual(200);
       expect(response.status(), `Broken navigation link: ${targetUrl}`).toBeLessThan(400);

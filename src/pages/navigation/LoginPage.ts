@@ -41,7 +41,7 @@ export class LoginPage extends BasePage {
         response.request().method() === 'GET'
     );
 
-    await this.page.goto('https://trade.mb.io/login', { waitUntil: 'domcontentloaded' });
+    await this.page.goto(URLs.login, { waitUntil: 'domcontentloaded' });
 
     const response = await currentUserResponsePromise;
     expect(response.status()).toBe(403);
