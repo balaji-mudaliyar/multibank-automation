@@ -29,11 +29,10 @@ export class LoginPage extends BasePage {
     await expect(this.loginButton).toBeEnabled();
   }
 
-  // This is what I'm working right now
+
   async clearEmailAndPasswordFields() {
     await this.emailInput.fill('');
     await this.passwordInput.fill('');
-   
   }
 
   async expectFieldRequiredErrors() {
