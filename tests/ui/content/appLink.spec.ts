@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { AppLinkPage } from '../../../src/pages/content';
 
-test.describe('Smart Download Link Redirection Tests', () => {
+test.describe('App Link Redirection', () => {
   test('should redirect to Apple App Store when user is on an iOS device', async ({ page, browser }) => {
     const appLinkPage = new AppLinkPage(page);
     await appLinkPage.open();

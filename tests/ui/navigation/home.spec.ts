@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 import { HomePage } from '../../../src/pages/navigation/HomePage';
 import { ExplorePage } from '../../../src/pages/trading/ExplorePage';
 
-test.describe('Navigation End-to-End Flow', () => {
+test.describe('Navigation Flows', () => {
 
   test('should render all expected top navigation links and buttons on the features page', async ({ page }) => {
     const homePage = new HomePage(page);

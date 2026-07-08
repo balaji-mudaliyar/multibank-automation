@@ -15,7 +15,7 @@ function isDnsResolutionError(error: unknown): boolean {
 }
 
 test.describe('Refdata Config API', () => {
-  test('fixture in data folder follows refdata config schema', async () => {
+  test('should validate the refdata fixture against the schema', async () => {
     const isFixtureValid = validateRefdataConfig(expectedResponse);
     expect(
       isFixtureValid,
@@ -23,7 +23,7 @@ test.describe('Refdata Config API', () => {
     ).toBeTruthy();
   });
 
-  test('returns 200 and schema-valid contract', async ({ apiHelper, logger }) => {
+  test('should return 200 and a schema-valid response contract', async ({ apiHelper, logger }) => {
     logger.info('Calling refdata config API');
 
     let response;
