@@ -100,6 +100,55 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 
 - Playwright HTML report is generated under `reports/html/`.
 
+## GitHub Pages (Clean Setup)
+
+Use `docs/` as your GitHub Pages source and publish report files into `docs/report/`.
+
+1. Generate or refresh the Playwright report:
+
+```bash
+npm test
+```
+
+2. Publish report files for GitHub Pages:
+
+```bash
+npm run pages:report
+```
+
+3. Commit and push `docs/` so GitHub Pages serves the latest report.
+
+Notes:
+
+- Pages entry point: `docs/index.html`
+- Embedded report path: `docs/report/index.html`
+- Script used: `scripts/publish-pages-report.sh`
+
+## Sample Test Execution Report (Cross-Browser)
+
+Command used:
+
+```bash
+npx playwright test tests/ui/navigation/login.spec.ts -g "renders the login form" --project=chromium --project=firefox --project=webkit --reporter=list
+```
+
+Sample output:
+
+```text
+Running 3 tests using 3 workers
+
+	✓ [chromium] Login flows › renders the login form
+	✓ [firefox] Login flows › renders the login form
+	✓ [webkit] Login flows › renders the login form
+
+	3 passed
+```
+
+Saved evidence artifact:
+
+- `reports/sample-cross-browser-report.json`
+- This JSON report includes browser-level execution data (`projectName`, `status`, and `duration`) for Chromium, Firefox, and WebKit.
+
 ## Extra Commands
 
 - Run a single UI test: `npx playwright test tests/ui/login/login.spec.ts -g "should log in"`
