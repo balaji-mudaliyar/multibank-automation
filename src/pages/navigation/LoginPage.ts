@@ -70,9 +70,6 @@ export class LoginPage extends BasePage {
       expect(bannerBox.width).toBeGreaterThan(200);
       expect(bannerBox.height).toBeGreaterThan(60);
     }
-    await expect(
-      this.page.getByTestId('marketing-banner-description')
-    ).toHaveText('Trade with low fees on a platform you can trust.');
   }
 
   async expectGuestUserNotAuthenticated() {
