@@ -19,6 +19,14 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
   ],
   outputDir: 'test-results/',
   snapshotPathTemplate: path.join('snapshots', '{testFilePath}', '{arg}{ext}'),
