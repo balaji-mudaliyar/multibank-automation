@@ -143,23 +143,22 @@ npm run pages:reports
 Command used:
 
 ```bash
-npx playwright test tests/ui/navigation/login.spec.ts -g "renders the login form" --project=chromium --project=firefox --project=webkit --reporter=list
+npx playwright test login.spec.ts -g "should render the login form" --project=chromium --project=firefox --reporter=list
 ```
 
 Sample output:
 
 ```text
-Running 3 tests using 3 workers
+Running 2 tests using 2 workers
 
-	✓ [chromium] Login flows › renders the login form
-	✓ [firefox] Login flows › renders the login form
-	✓ [webkit] Login flows › renders the login form
+  ✓  1 [firefox] › tests/ui/navigation/login.spec.ts:6:7 › Login Page › should render the login form (2.2s)
+  ✓  2 [chromium] › tests/ui/navigation/login.spec.ts:6:7 › Login Page › should render the login form (1.8s)
 
-	3 passed
+  2 passed (3.3s)
 ```
 
 
 ## Extra Commands
 
-- Run a single UI test: `npx playwright test tests/ui/login/login.spec.ts -g "should log in"`
+- Run a single UI test: `npx playwright test login.spec.ts -g "should render the login form"`
 - Run API tests only: `npx playwright test tests/api --project=api`
