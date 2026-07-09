@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MultiBank Automation Report</title>
+  <title>MultiBank Automation Reports</title>
   <style>
     :root {
       --bg: #0b1220;
@@ -62,6 +62,32 @@
       color: var(--muted);
     }
 
+    .report-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .switch-btn {
+      border: 1px solid #35507f;
+      background: #13203a;
+      color: var(--text);
+      border-radius: 8px;
+      font-size: 13px;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    .switch-btn.active {
+      border-color: var(--accent);
+      background: #173123;
+    }
+
+    .report-title {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     iframe {
       width: 100%;
       height: calc(100vh - 170px);
@@ -77,18 +103,50 @@
 </head>
 <body>
   <header>
-    <h1>MultiBank Automation - Playwright Report</h1>
+    <h1>MultiBank Automation - Test Reports</h1>
     <div class="meta">GitHub Pages entry point (docs/index.html)</div>
   </header>
 
   <main class="container">
     <div class="notice">
-      This page loads the latest published Playwright report from <strong>docs/report</strong>.
-      If the frame is empty, run <code>npm run pages:report</code> and commit updated docs files.
+      This page loads reports published into <strong>docs/report</strong> and <strong>docs/allure</strong>.
+      If the frame is empty, run <code>npm run pages:reports</code> and commit updated docs files.
       Direct report link: <a href="./report/index.html">docs/report/index.html</a>
+      <br />
+      Allure report link: <a href="./allure/index.html">docs/allure/index.html</a>
     </div>
 
-    <iframe src="./report/index.html" title="Playwright HTML Report"></iframe>
+    <div class="report-switcher">
+      <button class="switch-btn active" id="show-playwright" type="button">Playwright HTML</button>
+      <button class="switch-btn" id="show-allure" type="button">Allure Report</button>
+      <span class="report-title" id="report-title">Showing: Playwright HTML report</span>
+    </div>
+
+    <iframe id="report-frame" src="./report/index.html" title="Test Report Viewer"></iframe>
   </main>
+
+  <script>
+    const frame = document.getElementById('report-frame');
+    const title = document.getElementById('report-title');
+    const playwrightBtn = document.getElementById('show-playwright');
+    const allureBtn = document.getElementById('show-allure');
+
+    function activate(playwright) {
+      if (playwright) {
+        frame.src = './report/index.html';
+        title.textContent = 'Showing: Playwright HTML report';
+        playwrightBtn.classList.add('active');
+        allureBtn.classList.remove('active');
+      } else {
+        frame.src = './allure/index.html';
+        title.textContent = 'Showing: Allure report';
+        allureBtn.classList.add('active');
+        playwrightBtn.classList.remove('active');
+      }
+    }
+
+    playwrightBtn.addEventListener('click', () => activate(true));
+    allureBtn.addEventListener('click', () => activate(false));
+  </script>
 </body>
 </html>

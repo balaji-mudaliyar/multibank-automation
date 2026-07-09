@@ -112,6 +112,28 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 ## Reporting
 
 - Playwright HTML report is generated under `reports/html/`.
+- Allure result files are generated under `allure-results/`.
+- Allure static HTML report is generated under `reports/allure-html/`.
+
+Generate and open Allure report locally:
+
+```bash
+npm run allure:generate
+npm run allure:open
+```
+
+Publish reports to GitHub Pages (`docs/`):
+
+```bash
+npm run pages:report
+npm run pages:allure
+```
+
+Or publish both in one command:
+
+```bash
+npm run pages:reports
+```
 
 - Sample Report for browser-level execution can be viewed here : https://balaji-mudaliyar.github.io/multibank-automation/ 
 

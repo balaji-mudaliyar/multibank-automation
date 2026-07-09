@@ -5,3 +5,6 @@ node_modules/*
 playwright-report/*
 .vscode/settings.json
 reports/sample-cross-browser-report.json
+allure-results/*
+reports/allure-html/*
+allure-report/*
