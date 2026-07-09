@@ -19,17 +19,16 @@ Project structure at a glance
 
 ## Why Playwright ? 
 
-I selected Playwright framework for automationat because it offers modern browser automation with excellent reliability, built-in support for multiple browsers, and features that reduce test flakiness. It's particularly well-suited for fast-moving web applications and CI/CD pipelines.
+I selected Playwright as the automation framework because it provides modern, reliable browser automation with excellent cross-browser support and built-in features that help reduce test flakiness. It is well suited for modern web applications and integrates seamlessly into CI/CD pipelines.
 
-It provides the following
-
-- Reliable tests with built-in auto-waiting
-- Fast execution and parallelism
-- Cross-browser testing (Chromium, Firefox, WebKit)
-- Rich debugging features (trace viewer, screenshots, videos)
-- Built-in API testing and network interception
-- Strong CI/CD integration
-- Support for multiple programming languages
+Key benefits
+- Reliable test execution with built-in auto-waiting and intelligent actionability checks.
+- Fast execution through parallel test execution and efficient browser automation.
+- Cross-browser testing with native support for Chromium, Firefox, and WebKit using a single API.
+- Rich debugging capabilities, including Trace Viewer, screenshots, videos, and execution logs.
+- Built-in API testing and network interception for end-to-end and integration testing.
+- Seamless CI/CD integration with support for major CI platforms and detailed reporting.
+- Multi-language support, including TypeScript, JavaScript, Python, Java, and .NET.
 
 ## Quick Start
 
@@ -112,35 +111,12 @@ A GitHub Actions workflow is included at [.github/workflows/ci.yml](.github/work
 
 ## Reporting
 
-- Sample Report can be viewed here : https://balaji-mudaliyar.github.io/multibank-automation/ 
-
 - Playwright HTML report is generated under `reports/html/`.
 
-## GitHub Pages (Clean Setup)
+- Sample Report for browser-level execution can be viewed here : https://balaji-mudaliyar.github.io/multibank-automation/ 
 
-Use `docs/` as your GitHub Pages source and publish report files into `docs/report/`.
 
-1. Generate or refresh the Playwright report:
-
-```bash
-npm test
-```
-
-2. Publish report files for GitHub Pages:
-
-```bash
-npm run pages:report
-```
-
-3. Commit and push `docs/` so GitHub Pages serves the latest report.
-
-Notes:
-
-- Pages entry point: `docs/index.html`
-- Embedded report path: `docs/report/index.html`
-- Script used: `scripts/publish-pages-report.sh`
-
-## Sample Test Execution Report (Cross-Browser)
+## Sample Test Execution (Cross-Browser)
 
 Command used:
 
@@ -160,10 +136,6 @@ Running 3 tests using 3 workers
 	3 passed
 ```
 
-Saved evidence artifact:
-
-- `reports/sample-cross-browser-report.json`
-- This JSON report includes browser-level execution data (`projectName`, `status`, and `duration`) for Chromium, Firefox, and WebKit.
 
 ## Extra Commands
 
