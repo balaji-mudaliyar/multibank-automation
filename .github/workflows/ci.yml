@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+# Allow the workflow to push to the repo (needed to update docs/)
+permissions:
+  contents: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -31,6 +35,21 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Update docs/report with latest Playwright HTML report
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          rm -rf docs/report
+          cp -r reports/html docs/report
+
+      - name: Commit and push updated report to docs/
+        if: always() && github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/report
+          git diff --cached --quiet || git commit -m "chore: update GitHub Pages report [skip ci]"
+          git push
 
       - name: Upload Playwright report
         if: always()
