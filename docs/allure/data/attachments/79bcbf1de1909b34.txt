@@ -1,1 +1,0 @@
-[INFO] Calling refdata config API
