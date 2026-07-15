@@ -5,6 +5,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30_000,
   fullyParallel: true,
+  // workers: 4, // Sets exactly 4 workers
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   reporter: [['list'], ['allure-playwright'], ['html', { outputFolder: 'reports/html', open: 'never' }]],
