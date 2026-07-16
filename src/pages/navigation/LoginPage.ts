@@ -48,8 +48,8 @@ export class LoginPage extends BasePage {
   }
 
   async clearEmailAndPasswordFields() {
-    await this.emailInput.fill('');
-    await this.passwordInput.fill('');
+    await this.fill(this.emailInput, '');
+    await this.fill(this.passwordInput, '');
   }
 
   async expectPageLoaded() {
